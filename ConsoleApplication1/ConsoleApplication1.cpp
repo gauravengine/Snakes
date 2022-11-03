@@ -2,6 +2,9 @@
 //
 
 #include <iostream>
+#include "map.cpp"
+#include "snake.cpp"
+
 using namespace std;
 int main()
 {

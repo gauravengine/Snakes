@@ -29,7 +29,7 @@
     <ClInclude Include="snake.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="map.h">
+    <ClInclude Include="gamemap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

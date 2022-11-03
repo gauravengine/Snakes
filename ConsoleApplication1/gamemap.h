@@ -1,16 +1,17 @@
 #pragma once
 #include<vector>
 using namespace std;
-class map {
+class gamemap {
 public:
 	int height;
 	int width;
-	vector<vector<int>> grid;
+	vector<vector<char>> grid;
 	bool fruitEaten;
 	int fruitX, fruitY;
-	void printMap(vector< vector<int> > snakeCoordinates,);
+	void printMap(vector< vector<int> >);
 	vector<int> getFruitCoordinates();
-	void setHeight();
-	void setWidht();
+	void setHeight(int);
+	void setWidht(int);
 	void fruitUpdate();
+	gamemap(int, int);
 };
