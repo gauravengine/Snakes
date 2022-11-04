@@ -46,9 +46,9 @@ void snake::updateCoordinates(gamemap &mymap) {
 		this->length += 1;
 		mymap.fruitUpdate();
 	}
-	if (prevX == coordinates[0][0] || prevY == coordinates[1][0]) this->bittenSelf = true;
+	if (prevX == coordinates[0][0] && prevY == coordinates[1][0]) this->bittenSelf = true;
 	for (int i = 1; i < length; i++) {
-		if (coordinates[0][i] == coordinates[0][0] || coordinates[1][i] == coordinates[1][0]) this->bittenSelf = true;
+		if (coordinates[0][i] == coordinates[0][0] && coordinates[1][i] == coordinates[1][0]) this->bittenSelf = true;
 	}
 	for (int i = 1; i < length; i++) {
 		int tempX = coordinates[0][i];

@@ -53,7 +53,7 @@ int main()
         input(mysnk);
         mysnk.updateCoordinates(recmap);
         if (mysnk.bittenSelf) {
-            //return 0;
+            return 0;
         }
         Sleep(100);
     }
