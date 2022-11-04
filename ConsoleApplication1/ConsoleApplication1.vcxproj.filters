@@ -21,7 +21,7 @@
     <ClCompile Include="snake.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="map.cpp">
+    <ClCompile Include="gamemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

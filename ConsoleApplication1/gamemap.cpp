@@ -1,4 +1,5 @@
 #include<iostream>
+
 #include "gamemap.h"
 
 using namespace std;
@@ -11,13 +12,19 @@ gamemap::gamemap(int height,int width) {
 	this->grid.resize(height, vector<char>(width, ' '));
 }
 
-void gamemap::printMap(vector<vector<int> > snakeCoordinates) {
-	grid[snakeCoordinates[0][0]][snakeCoordinates[1][0]] = '0';
-	for (int i = 1; i < snakeCoordinates.size(); i++) {
+void gamemap::printMap(vector<vector<int> > snakeCoordinates,int len,int score) {
+	vector<vector<char> > tempgrid;
+	tempgrid = grid;
+	
+	for (int i = 1; i < len; i++) {
+		//cerr <<"yo " << snakeCoordinates.size() << endl;
 		grid[snakeCoordinates[0][i]][snakeCoordinates[1][i]] = 'o';
 	}
+	grid[snakeCoordinates[0][0]][snakeCoordinates[1][0]] = 'H';
 	grid[fruitX][fruitY] = '*';
 	for (int i = 0; i <= width + 1; i++) std::cout << "#";
+	cout << "\n";
+
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j <= width+1; j++) {
 			if (j == 0 || j == width + 1) cout << "#";
@@ -25,6 +32,9 @@ void gamemap::printMap(vector<vector<int> > snakeCoordinates) {
 		}
 		cout << "\n";
 	}
+	for (int i = 0; i <= width + 1; i++) std::cout << "#";
+	cout << "\n" << "Score = " << score<<"\n";
+	grid = tempgrid;
 }
 
 vector<int> gamemap::getFruitCoordinates() {

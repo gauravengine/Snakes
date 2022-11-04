@@ -1,5 +1,6 @@
 #pragma once
 #include<vector>
+#include "gamemap.h"
 using namespace std;
 
 class snake
@@ -9,6 +10,7 @@ public:
 	int score;
 	vector<vector<int>> coordinates; // 2*n coordinates
 	bool bittenSelf;
+	int height, width;
 	enum direction
 	{
 		STOP,
@@ -19,9 +21,10 @@ public:
 	};
 	direction MYDIR;
 	void incscore();
-	void updateCoordinates();
+	void updateCoordinates(gamemap& );
+	
 	bool updateScore(int fx, int fy);
-
+	snake(int,int);
 
 };
 

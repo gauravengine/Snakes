@@ -2,13 +2,61 @@
 //
 
 #include <iostream>
-#include "map.cpp"
-#include "snake.cpp"
+#include<Windows.h>
+#include<conio.h>
+#include "gamemap.h"
+#include "snake.h"
 
 using namespace std;
+void setup() {
+    
+
+}
+void clear_screen(char fill = ' ') {
+    COORD tl = { 0,0 };
+    CONSOLE_SCREEN_BUFFER_INFO s;
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    GetConsoleScreenBufferInfo(console, &s);
+    DWORD written, cells = s.dwSize.X * s.dwSize.Y;
+    FillConsoleOutputCharacter(console, fill, cells, tl, &written);
+    FillConsoleOutputAttribute(console, s.wAttributes, cells, tl, &written);
+    SetConsoleCursorPosition(console, tl);
+}
+void input(snake &mysnk) {
+    if (_kbhit()) {
+        switch (_getch()) {
+        case 'a':
+            mysnk.MYDIR = snake::direction::EAST;
+            break;
+        case 'd':
+            mysnk.MYDIR = snake::direction::WEST;
+            break;
+        case 'w':
+            mysnk.MYDIR = snake::direction::NORTH;
+            break;
+        case 's':
+            mysnk.MYDIR = snake::direction::SOUTH;
+            break;
+        default:
+            break;
+         }
+    }
+}
 int main()
 {
-    
+    gamemap recmap(30, 30);
+    snake mysnk(recmap.height, recmap.width);
+    while (true) {
+        //clear_screen();
+        system("cls");
+        recmap.printMap(mysnk.coordinates,mysnk.length,mysnk.score);
+        input(mysnk);
+        mysnk.updateCoordinates(recmap);
+        if (mysnk.bittenSelf) {
+            //return 0;
+        }
+        Sleep(100);
+    }
 
 }
 
