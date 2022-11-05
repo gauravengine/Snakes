@@ -26,15 +26,31 @@ void input(snake &mysnk) {
     if (_kbhit()) {
         switch (_getch()) {
         case 'a':
+            if (mysnk.MYDIR == snake::direction::WEST) {
+                //invalid move
+                break;
+            }
             mysnk.MYDIR = snake::direction::EAST;
             break;
         case 'd':
+            if (mysnk.MYDIR == snake::direction::EAST) {
+                //invalid move
+                break;
+            }
             mysnk.MYDIR = snake::direction::WEST;
             break;
         case 'w':
+            if (mysnk.MYDIR == snake::direction::SOUTH) {
+                //invalid move
+                break;
+            }
             mysnk.MYDIR = snake::direction::NORTH;
             break;
         case 's':
+            if (mysnk.MYDIR == snake::direction::NORTH) {
+                //invalid move
+                break;
+            }
             mysnk.MYDIR = snake::direction::SOUTH;
             break;
         default:
@@ -55,7 +71,7 @@ int main()
         if (mysnk.bittenSelf) {
             return 0;
         }
-        Sleep(100);
+        Sleep(200);
     }
 
 }
